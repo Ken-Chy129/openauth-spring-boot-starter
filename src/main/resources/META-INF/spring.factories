@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.ken.thirdauth.autoconfigure.ThirdAuthAutoConfiguration
+  cn.ken.thirdauth.autoconfigure.ThirdAuthAutoConfiguration

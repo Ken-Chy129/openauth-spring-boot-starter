@@ -27,12 +27,9 @@ public class ThirdAuthStateCacheConfiguration {
     @ConditionalOnProperty(name = "thirdauth.cache.type", havingValue = "default", matchIfMissing = true)
     static class Default {
 
-        static {
-            log.debug("ThirdAuth 使用内存存储 state 值");
-        }
-
         @Bean
         public AuthStateCache authStateCache() {
+            log.info("ThirdAuth 使用内存存储 state 值");
             return DefaultAuthStateCache.INSTANCE;
         }
     }
@@ -43,12 +40,9 @@ public class ThirdAuthStateCacheConfiguration {
     @ConditionalOnProperty(name = "thirdauth.cache.type", havingValue = "redis", matchIfMissing = true)
     static class Redis {
 
-        static {
-            log.debug("ThirdAuth 使用 Redis 存储 state 值");
-        }
-
         @Bean
         public AuthStateCache authStateCache(RedisTemplate<String, String> redisTemplate, ThirdAuthProperties thirdAuthProperties) {
+            log.info("ThirdAuth 使用 Redis 存储 state 值");
             return new RedisStateCache(redisTemplate, thirdAuthProperties.getCache());
         }
 
@@ -59,7 +53,7 @@ public class ThirdAuthStateCacheConfiguration {
     static class Custom {
 
         static {
-            log.debug("ThirdAuth 使用自定义缓存存储 state 值");
+            log.info("ThirdAuth 使用自定义缓存存储 state 值");
         }
 
         @Bean
