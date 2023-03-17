@@ -1,7 +1,7 @@
-package cn.ken.thridauth.autoconfigure;
+package cn.ken.thirdauth.autoconfigure;
 
 import cn.ken.thirdauth.cache.AuthStateCache;
-import cn.ken.thridauth.ThirdAuthRequestFactory;
+import cn.ken.thirdauth.ThirdAuthRequestFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

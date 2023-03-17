@@ -1,12 +1,12 @@
-package cn.ken.thridauth;
+package cn.ken.thirdauth;
 
 import cn.ken.thirdauth.cache.AuthStateCache;
 import cn.ken.thirdauth.config.AuthPlatformConfig;
 import cn.ken.thirdauth.enums.AuthExceptionCode;
 import cn.ken.thirdauth.exception.AuthException;
 import cn.ken.thirdauth.request.*;
-import cn.ken.thridauth.autoconfigure.ExtendProperties;
-import cn.ken.thridauth.autoconfigure.ThirdAuthProperties;
+import cn.ken.thirdauth.autoconfigure.ExtendProperties;
+import cn.ken.thirdauth.autoconfigure.ThirdAuthProperties;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;

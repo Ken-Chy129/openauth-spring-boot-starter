@@ -1,8 +1,8 @@
-package cn.ken.thridauth.autoconfigure;
+package cn.ken.thirdauth.autoconfigure;
 
 import cn.ken.thirdauth.cache.AuthStateCache;
 import cn.ken.thirdauth.cache.DefaultAuthStateCache;
-import cn.ken.thridauth.support.cache.RedisStateCache;
+import cn.ken.thirdauth.support.cache.RedisStateCache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

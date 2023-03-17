@@ -1,7 +1,7 @@
-package cn.ken.thridauth.support.cache;
+package cn.ken.thirdauth.support.cache;
 
 import cn.ken.thirdauth.cache.AuthStateCache;
-import cn.ken.thridauth.autoconfigure.CacheProperties;
+import cn.ken.thirdauth.autoconfigure.CacheProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.concurrent.TimeUnit;

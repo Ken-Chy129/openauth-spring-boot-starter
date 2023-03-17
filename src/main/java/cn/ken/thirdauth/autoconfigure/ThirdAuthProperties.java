@@ -1,4 +1,4 @@
-package cn.ken.thridauth.autoconfigure;
+package cn.ken.thirdauth.autoconfigure;
 
 import cn.ken.thirdauth.config.AuthPlatformConfig;
 import lombok.Getter;
