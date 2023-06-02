@@ -1,9 +1,5 @@
 package cn.ken.thirdauth.autoconfigure;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 /**
  * <pre>
  * 缓存配置类
@@ -12,8 +8,6 @@ import lombok.ToString;
  * @author <a href="https://github.com/Ken-Chy129">Ken-Chy129</a>
  * @since 2023/3/17 17:35
  */
-@Getter
-@Setter
 public class CacheProperties {
 
     /**
@@ -30,12 +24,7 @@ public class CacheProperties {
      * 超时时长，目前只对redis缓存生效，默认3分钟
      */
     private long timeout = 3;
-
-    /**
-     * 缓存类型
-     */
-    @Getter
-    @ToString
+    
     public enum CacheType {
 
         /**
@@ -52,5 +41,30 @@ public class CacheProperties {
          * 自定义缓存
          */
         CUSTOM
+        
+    }
+
+    public CacheType getType() {
+        return type;
+    }
+
+    public void setType(CacheType type) {
+        this.type = type;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public long getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(long timeout) {
+        this.timeout = timeout;
     }
 }

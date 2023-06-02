@@ -1,26 +1,27 @@
 package cn.ken.thirdauth;
 
+import cn.ken.thirdauth.autoconfigure.ExtendProperties;
+import cn.ken.thirdauth.autoconfigure.ThirdAuthProperties;
 import cn.ken.thirdauth.cache.AuthStateCache;
 import cn.ken.thirdauth.config.AuthPlatformConfig;
 import cn.ken.thirdauth.enums.AuthExceptionCode;
 import cn.ken.thirdauth.exception.AuthException;
 import cn.ken.thirdauth.request.*;
-import cn.ken.thirdauth.autoconfigure.ExtendProperties;
-import cn.ken.thirdauth.autoconfigure.ThirdAuthProperties;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * <pre>
- * 三方平台请求工厂
+ * 开放平台请求工厂
  * </pre>
  *
  * @author <a href="https://github.com/Ken-Chy129">Ken-Chy129</a>
  * @since 2023/3/17 17:36
  */
-@Slf4j
 public class ThirdAuthRequestFactory {
+    
+    private static final Logger logger = Logger.getLogger(ThirdAuthProperties.class.getName());
 
     private final ThirdAuthProperties properties;
 
@@ -123,7 +124,7 @@ public class ThirdAuthRequestFactory {
                 try {
                     return requestClass.getDeclaredConstructor(requestClass, ExtendProperties.ExtendRequestConfig.class, AuthStateCache.class).newInstance(clazz, extendRequestConfig, cache);
                 } catch (Exception e) {
-                    log.error(clazz.getName() + "需要实现两个参数(ExtendRequestConfig, AuthStateCache)的构造方法");
+                    logger.warning(clazz.getName() + "需要实现两个参数(ExtendRequestConfig, AuthStateCache)的构造方法");
                 }
             }
         }

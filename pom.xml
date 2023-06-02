@@ -35,8 +35,8 @@
         </dependency>
         <dependency>
             <groupId>cn.ken</groupId>
-            <artifactId>thirdauth</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>openauth</artifactId>
+            <version>2.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     

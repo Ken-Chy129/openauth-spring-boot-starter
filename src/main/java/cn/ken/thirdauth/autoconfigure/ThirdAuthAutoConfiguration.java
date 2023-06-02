@@ -2,7 +2,6 @@ package cn.ken.thirdauth.autoconfigure;
 
 import cn.ken.thirdauth.cache.AuthStateCache;
 import cn.ken.thirdauth.ThirdAuthRequestFactory;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +16,6 @@ import org.springframework.context.annotation.Import;
  * @author <a href="https://github.com/Ken-Chy129">Ken-Chy129</a>
  * @since 2023/3/17 17:13
  */
-@Slf4j
 @Configuration
 @EnableConfigurationProperties(ThirdAuthProperties.class)
 public class ThirdAuthAutoConfiguration {

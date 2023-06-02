@@ -3,7 +3,6 @@ package cn.ken.thirdauth.autoconfigure;
 import cn.ken.thirdauth.cache.AuthStateCache;
 import cn.ken.thirdauth.cache.DefaultAuthStateCache;
 import cn.ken.thirdauth.support.cache.RedisStateCache;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -11,6 +10,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.logging.Logger;
 
 /**
  * <pre>
@@ -20,8 +21,9 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @author <a href="https://github.com/Ken-Chy129">Ken-Chy129</a>
  * @since 2023/3/17 18:07
  */
-@Slf4j
 public class ThirdAuthStateCacheConfiguration {
+    
+    private static final Logger logger = Logger.getLogger(ThirdAuthStateCacheConfiguration.class.getName());
 
     @ConditionalOnMissingBean(AuthStateCache.class)
     @ConditionalOnProperty(name = "thirdauth.cache.type", havingValue = "default", matchIfMissing = true)
@@ -29,7 +31,7 @@ public class ThirdAuthStateCacheConfiguration {
 
         @Bean
         public AuthStateCache authStateCache() {
-            log.info("ThirdAuth 使用内存存储 state 值");
+            logger.info("ThirdAuth 使用内存存储 state 值");
             return DefaultAuthStateCache.INSTANCE;
         }
     }
@@ -42,7 +44,7 @@ public class ThirdAuthStateCacheConfiguration {
 
         @Bean
         public AuthStateCache authStateCache(RedisTemplate<String, String> redisTemplate, ThirdAuthProperties thirdAuthProperties) {
-            log.info("ThirdAuth 使用 Redis 存储 state 值");
+            logger.info("ThirdAuth 使用 Redis 存储 state 值");
             return new RedisStateCache(redisTemplate, thirdAuthProperties.getCache());
         }
 
@@ -53,12 +55,12 @@ public class ThirdAuthStateCacheConfiguration {
     static class Custom {
 
         static {
-            log.info("ThirdAuth 使用自定义缓存存储 state 值");
+            logger.info("ThirdAuth 使用自定义缓存存储 state 值");
         }
 
         @Bean
         public AuthStateCache authStateCache() {
-            log.error("自定义缓存器不存在，请自行实现cn.ken.thirdauth.cache.AuthStateCache接口或选择其他缓存策略");
+            logger.warning("自定义缓存器不存在，请自行实现cn.ken.thirdauth.cache.AuthStateCache接口或选择其他缓存策略");
             throw new RuntimeException();
         }
 

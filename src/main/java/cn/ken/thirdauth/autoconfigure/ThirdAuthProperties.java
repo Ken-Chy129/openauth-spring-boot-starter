@@ -1,8 +1,6 @@
 package cn.ken.thirdauth.autoconfigure;
 
 import cn.ken.thirdauth.config.AuthPlatformConfig;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
@@ -17,8 +15,7 @@ import java.util.Map;
  * @author <a href="https://github.com/Ken-Chy129">Ken-Chy129</a>
  * @since 2023/3/17 17:12
  */
-@Getter
-@Setter
+
 @ConfigurationProperties(prefix = "thirdauth")
 public class ThirdAuthProperties {
 
@@ -44,4 +41,35 @@ public class ThirdAuthProperties {
     @NestedConfigurationProperty
     private CacheProperties cache = new CacheProperties();
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Map<String, AuthPlatformConfig> getType() {
+        return type;
+    }
+
+    public void setType(Map<String, AuthPlatformConfig> type) {
+        this.type = type;
+    }
+
+    public ExtendProperties getExtend() {
+        return extend;
+    }
+
+    public void setExtend(ExtendProperties extend) {
+        this.extend = extend;
+    }
+
+    public CacheProperties getCache() {
+        return cache;
+    }
+
+    public void setCache(CacheProperties cache) {
+        this.cache = cache;
+    }
 }
